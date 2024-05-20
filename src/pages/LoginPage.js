@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+import Cookies from "js-cookie";
+
 import { authSliceActions } from "../store/authSlice";
 
 const LoginPage = () => {

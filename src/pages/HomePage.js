@@ -31,12 +31,6 @@ const HomePage = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [postIdEdit, setPostIdEdit] = useState(null);
 
-  const cookie = Cookies.get()["connect.sid"]
-    ? Cookies.get()["connect.sid"].split(":")[1].split(".")[0]
-    : null;
-
-  console.log("cookie:", cookie);
-
   useEffect(() => {
     const socket = openSocket("https://lab-23-1-server.onrender.com");
     // const socket = openSocket("http://localhost:5000");
@@ -108,6 +102,12 @@ const HomePage = () => {
   useEffect(() => {
     try {
       getPostsHandle();
+
+      const cookie = Cookies.get()["connect.sid"]
+        ? Cookies.get()["connect.sid"].split(":")[1].split(".")[0]
+        : null;
+
+      console.log("cookie:", cookie);
     } catch (err) {
       console.log("Error get posts:", err);
     }
@@ -125,6 +125,7 @@ const HomePage = () => {
       auth && Cookies.get()["connect.sid"]
         ? Cookies.get()["connect.sid"].split(":")[1].split(".")[0]
         : null;
+    console.log("currentCookie:", currentCookie);
 
     const formData = new FormData();
     formData.append("title", title);
