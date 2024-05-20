@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initValue = { auth: false, userData: null };
+const initValue = { auth: false, userData: null, sessionId: null };
 
 const authSlice = createSlice({
   name: "authSlice",
@@ -11,6 +11,9 @@ const authSlice = createSlice({
     },
     userDataUpdate(state, action) {
       state.userData = action.payload;
+    },
+    sessionIdUpdate(state, action) {
+      state.sessionId = action.payload;
     },
   },
 });

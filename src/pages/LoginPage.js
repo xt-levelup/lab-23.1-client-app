@@ -33,6 +33,7 @@ const LoginPage = () => {
 
   const loginPost = async (event) => {
     event.preventDefault();
+    // const response = await fetch("http://localhost:5000/login", {
     const response = await fetch("https://lab-23-1-server.onrender.com/login", {
       method: "POST",
       credentials: "include",
@@ -71,6 +72,11 @@ const LoginPage = () => {
       dispatch(authSliceActions.authUpdate(true));
       dispatch(authSliceActions.userDataUpdate(data));
       setErrorMessage(null);
+      const cookie = Cookies.get()["connect.sid"]
+        ? Cookies.get()["connect.sid"].split(":")[1].split(".")[0]
+        : null;
+
+      console.log("cookie:", cookie);
       navigate("/");
     }
   };

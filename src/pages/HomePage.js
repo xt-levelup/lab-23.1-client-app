@@ -31,6 +31,12 @@ const HomePage = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [postIdEdit, setPostIdEdit] = useState(null);
 
+  const cookie = Cookies.get()["connect.sid"]
+    ? Cookies.get()["connect.sid"].split(":")[1].split(".")[0]
+    : null;
+
+  console.log("cookie:", cookie);
+
   useEffect(() => {
     const socket = openSocket("https://lab-23-1-server.onrender.com");
     // const socket = openSocket("http://localhost:5000");
@@ -88,6 +94,7 @@ const HomePage = () => {
 
   const getPostsHandle = async () => {
     const response = await fetch(
+      // "http://localhost:5000/getPosts"
       "https://lab-23-1-server.onrender.com/getPosts"
     );
     const data = await response.json();
@@ -107,6 +114,9 @@ const HomePage = () => {
   }, []);
 
   const postHandle = async () => {
+    // const serverUrl = postIdEdit
+    //   ? "http://localhost:5000/editPost"
+    //   : "http://localhost:5000/post";
     const serverUrl = postIdEdit
       ? "https://lab-23-1-server.onrender.com/editPost"
       : "https://lab-23-1-server.onrender.com/post";
@@ -157,6 +167,7 @@ const HomePage = () => {
 
   const deletePostHandle = async (postId) => {
     const response = await fetch(
+      // "http://localhost:5000/deletePost",
       "https://lab-23-1-server.onrender.com/deletePost",
       {
         method: "POST",

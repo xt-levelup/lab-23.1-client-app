@@ -21,6 +21,7 @@ const SignupPage = () => {
 
   const postSignup = async () => {
     const response = await fetch(
+      // "http://localhost:5000/signup",
       "https://lab-23-1-server.onrender.com/signup",
       {
         method: "POST",

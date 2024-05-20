@@ -12,6 +12,7 @@ const ViewPage = () => {
     console.log("postId:", postId);
     const response = await fetch(
       "https://lab-23-1-server.onrender.com/getPost",
+      // "http://localhost:5000/getPost",
       {
         method: "POST",
         headers: {
@@ -59,6 +60,7 @@ const ViewPage = () => {
 
             <img
               src={`https://lab-23-1-server.onrender.com/${post.imageUrl}`}
+              // src={`http://localhost:5000/${post.imageUrl}`}
               style={{ width: "210px", height: "210px" }}
             />
 
